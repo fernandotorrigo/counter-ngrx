@@ -7,11 +7,15 @@ import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.state';
 import { CounterDisplayComponent } from './counter-display/counter-display.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HttpClientModule } from '@angular/common/http';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { TodoComponent } from './todo/todo.component';
 
 @NgModule({
-  declarations: [AppComponent, CounterDisplayComponent],
+  declarations: [AppComponent, CounterDisplayComponent, UserDetailsComponent, TodoComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({ app: appReducer }, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),

@@ -1,11 +1,19 @@
 import { createAction, createReducer, on, props } from '@ngrx/store';
 
+export interface ITodo {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
+}
 export interface IAppState {
   counter: number;
+  todos: ITodo[];
 }
 
 export const appInitialState: IAppState = {
   counter: 2,
+  todos: [],
 };
 
 export const counterIncrement = createAction(`[App] count increase`);
@@ -13,6 +21,11 @@ export const counterDecrement = createAction(`[App] count deincrease`);
 export const setCounter = createAction(
   `[App] count set`,
   props<{ counter: number }>()
+);
+
+export const setTodos = createAction(
+  `[App] Set todos`,
+  props<{ payload: ITodo[] }>()
 );
 
 export const appReducer = createReducer(
@@ -34,6 +47,13 @@ export const appReducer = createReducer(
     state = {
       ...state,
       counter,
+    };
+    return state;
+  }),
+  on(setTodos, (state, { payload }) => {
+    state = {
+      ...state,
+      todos: payload,
     };
     return state;
   })

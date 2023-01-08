@@ -19,20 +19,6 @@ export class TodoComponent {
   counter$ = this.store.select(`app`).pipe(map((data) => data.counter));
 
   ngOnInit() {
-    // this.store
-    //   .select(`app`)
-    //   .pipe(map((data) => data.todos))
-    //   .subscribe({
-    //     next: (todos) => {
-    //       if (todos.length === 0) {
-    //         this.http
-    //           .get<ITodo[]>(`https://jsonplaceholder.typicode.com/todos`)
-    //           .subscribe({
-    //             next: (res) => this.store.dispatch(setTodos({ payload: res })),
-    //           });
-    //       }
-    //     },
-    //   });
     this.store.dispatch(loadTodos());
   }
 }

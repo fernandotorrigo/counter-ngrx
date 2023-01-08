@@ -17,16 +17,22 @@ export const appInitialState: IAppState = {
 };
 
 export const counterIncrement = createAction(`[App] count increase`);
+
 export const counterDecrement = createAction(`[App] count deincrease`);
+
 export const setCounter = createAction(
   `[App] count set`,
   props<{ counter: number }>()
 );
 
+export const loadTodos = createAction(`[App] Load todos`);
+
 export const setTodos = createAction(
   `[App] Set todos`,
   props<{ payload: ITodo[] }>()
 );
+
+export const successLoadTodos = createAction(`[App] Success load todos`);
 
 export const appReducer = createReducer(
   appInitialState,
